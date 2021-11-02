@@ -25,8 +25,11 @@ GROUP BY I.Item_ID
 ORDER BY Copies_Sold DESC;
 
 -- Provide a list of the IP Item names and associated dollar totals for copies sold to all buyers, sorted from the IP Item that has sold the highest dollar amount to the IP Item that has sold the smallest.
--- Irfan
-
+SELECT I.Item_Name, SUM(I.Price) AS Dollar_Totals
+FROM Orders_Placed AS OP, Shopping_Cart AS SC, Item_Shopping_Cart AS ISC, Item AS I
+WHERE OP.Shopping_Cart_ID = SC.Shopping_Cart_ID AND SC.Shopping_Cart_ID = ISC.Shopping_Cart_ID AND ISC.Item_ID = I.Item_ID
+GROUP BY ISC.Item_ID
+ORDER BY Dollar_Totals DESC;
 
 -- Find the most popular seller (i.e. the one who has sold the most IP Items)
 -- Irfan
