@@ -43,7 +43,6 @@ HAVING COUNT(*) = (
 	)
 );
 
-
 -- Create a list of all payment types accepted, number of times each of them was used, and total amount charged to that type of payment
 SELECT Payment_Type, COUNT(Payment_Type), SUM(Amount_Paid)
 FROM Payment AS P, Orders_Placed AS OP, Payment_Order AS PO

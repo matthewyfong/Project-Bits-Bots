@@ -14,6 +14,8 @@ DELETE FROM Payment_Order;
 DELETE FROM Item_VirtualStore;
 DELETE FROM Refund;
 DELETE FROM Feedback;
+DELETE FROM Wish_List;
+DELETE FROM Item_WishList;
 
 INSERT INTO Item
 	VALUES (1, 'Light Blue Color Image', 3, 'Light Blue Image', 'jpeg', 1);
@@ -88,7 +90,7 @@ INSERT INTO Account
 
 INSERT INTO Account
 	VALUES (4, 'Carl', 'Wong', 'CarlWong@example.edu', 6144444444, 'F', 0, 1, 'T', 'A seller of water IP');
-	   
+	  
 INSERT INTO Account
 	VALUES (5, 'Steph', 'Len', 'len@osu.edu', 7881111111, 'T', 5, 2, 'F', 'A casual buyer');
 
@@ -132,6 +134,7 @@ INSERT INTO Virtual_Store
 
 
 
+-- (Payment_ID, Payment_Type, Account_ID)
 INSERT INTO Payment 
 	VALUES (1, 1, 1);
 
@@ -238,6 +241,7 @@ INSERT INTO Karma
 
 
 
+-- Shopping_Cart (Shopping_Cart_ID, Updated_Date, Buyer_ID)
 INSERT INTO Shopping_Cart
 	VALUES (1, '2021-08-04', 1);
 
@@ -262,29 +266,34 @@ INSERT INTO Shopping_Cart
 INSERT INTO Shopping_Cart
 	VALUES (8, '2021–12-10', 10);
 
+INSERT INTO Shopping_Cart
+	VALUES (9, '2019–12-10', 1);
 
 
 -- (Order_ID, Delivery_Status, Delivery_Method, Date_of_Purchase, Total_Price, Amount_Paid, Completed, Buyer_ID, Shopping_Cart_ID)
 INSERT INTO Orders_Placed
-	 VALUES (1, 'sent', 'email', '2021-08-05', 30, 30, 'yes', 1, 1);
+	VALUES (1, 'sent', 'email', '2021-08-05', 30, 30, 'yes', 1, 1);
 
 INSERT INTO Orders_Placed
-	 VALUES (2, 'sent', 'email', '2021-09-12', 22, 22, 'yes', 3, 2);
+	VALUES (2, 'sent', 'email', '2021-09-12', 22, 22, 'yes', 3, 2);
 
 INSERT INTO Orders_Placed
-	 VALUES (3, 'sent', 'email', '2021-09-13', 5, 5, 'yes', 3, 3);
+	VALUES (3, 'sent', 'email', '2021-09-13', 5, 5, 'yes', 3, 3);
 
 INSERT INTO Orders_Placed
-	 VALUES (4, 'sent', 'email', '2021-11-20', 54, 54, 'yes', 5, 4);
+	VALUES (4, 'sent', 'email', '2021-11-20', 54, 54, 'yes', 5, 4);
 
 INSERT INTO Orders_Placed
-	 VALUES (5, 'sent', 'email', '2021-12-05', 15, 15, 'yes', 7, 5);
+	VALUES (5, 'sent', 'email', '2021-12-05', 15, 15, 'yes', 7, 5);
 
 INSERT INTO Orders_Placed
-	 VALUES (6, 'sent', 'email', '2021-12-08', 19, 19, 'yes', 9, 6);
+	VALUES (6, 'sent', 'email', '2021-12-08', 19, 19, 'yes', 9, 6);
 
 INSERT INTO Orders_Placed
-	 VALUES (7, 'sent', 'email', '2021-12-10', 20, 20, 'yes', 10, 8);
+	VALUES (7, 'sent', 'email', '2021-12-10', 20, 20, 'yes', 10, 8);
+
+INSERT INTO Orders_Placed
+	VALUES (8, 'sent', 'email', '2019-12-10', 10, 10, 'yes', 1, 9);
 
 
 
@@ -347,6 +356,9 @@ INSERT INTO Item_Shopping_Cart
 
 INSERT INTO Item_Shopping_Cart
 	VALUES (2, 1);
+	
+INSERT INTO Item_Shopping_Cart
+	VALUES (3, 10);
 
 
 
@@ -377,6 +389,9 @@ INSERT INTO Payment_Order
 
 INSERT INTO Payment_Order
 	VALUES (16, 8, 20);
+	
+INSERT INTO Payment_Order
+	VALUES (1, 8, 10);
 
 
 
