@@ -33,20 +33,17 @@ ORDER BY Dollar_Totals DESC;
 
 
 -- Find the most popular seller (i.e. the one who has sold the most IP Items)
--- Irfan
 SELECT First_Name, Last_Name
 FROM Account AS A, Item AS I, Virtual_Store AS VS
 WHERE OP.Shopping_Cart_ID = SC.Shopping_Cart_ID AND SC.Shopping_Cart_ID = ISC.Shopping_Cart_ID AND ISC.Item_ID = I.Item_ID
 GROUP BY I.Item_ID HAVING MAX Item_ID
 
 -- Find the most profitable seller (i.e. the one who has brought in the most money)
--- Rachelle
 SELECT First_Name, Last_Name, SUM(I.Price)
 FROM Account AS A, Item AS I, Virtual_Store AS VS
 WHERE I.Seller_ID = VS.Seller_ID AND I.Seller_ID = A.Account_ID;
 
 -- Provide a list of buyer names for buyers who purchased anything listed by the most profitable seller
--- Rachelle
 SELECT First_Name, Last_Name
 FROM Account AS A, Item AS I, Virtual_Store AS VS, Orders_Placed AS OP
 WHERE I.Seller_ID = VS.Seller_ID AND I.Seller_ID = A.Account_ID
@@ -58,7 +55,12 @@ HAVING SUM(I.Price)
 
 
 -- Provide the list of sellers who listed the IP Items purchased by the buyers who have spent more than the average buyer.
--- Eddie
+SELECT   First Name, Last Name
+FROM      Account AS A, Order_placed
+WHERE   A.Account_ID = OP.Buyer_ID AND A.Account_ID = I.Seller_ID AND I.Item_ID = ISC.Item_ID
+GROUP BY Account_ID
+HAVING SUM(Total_price) > (SELECT average) FROM (SELECT AVG(Total_Price) AS average FROM Employee GROUP BY Account_ID));
+
 
 
 -- Provide sales statistics (number of items sold, highest price, lowest price, and average price) for each type of IP item offered by a particular store.
