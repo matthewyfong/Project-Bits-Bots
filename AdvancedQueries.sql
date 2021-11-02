@@ -62,6 +62,9 @@ GROUP BY Account_ID
 HAVING SUM(Total_price) > (SELECT average) FROM (SELECT AVG(Total_Price) AS average FROM Employee GROUP BY Account_ID));
 
 
-
 -- Provide sales statistics (number of items sold, highest price, lowest price, and average price) for each type of IP item offered by a particular store.
--- Eddie
+SELECT   Max(Price), Min(Price), avg(Price), Count(Item_ID)
+FROM      Item AS I, Virtual_Store AS VS, Item_Virtual_Store AS IVS, Ordered_Placed AS OP, 
+                 Account_ID)
+WHERE   I.Item_ID = IVS.Item_ID AND IVS.Store_ID = VS.Store_ID AND I.Seller_ID = A.Account_ID AND A.Account_ID = OP.Buyer_ID;
+
