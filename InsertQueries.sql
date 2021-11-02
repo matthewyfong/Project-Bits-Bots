@@ -17,6 +17,8 @@ DELETE FROM Feedback;
 DELETE FROM Wish_List;
 DELETE FROM Item_WishList;
 
+
+-- (Item_ID, Item_Name, Price, Description, File_Type, Seller_ID)
 INSERT INTO Item
 	VALUES (1, 'Light Blue Color Image', 3, 'Light Blue Image', 'jpeg', 1);
 
