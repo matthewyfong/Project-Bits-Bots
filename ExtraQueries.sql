@@ -1,3 +1,4 @@
+
 -- Create a list of people who requested refunds. The query should include all buyers, including those who haven’t requested a refund.
 SELECT first_name, last_name, status
 FROM Account AS A LEFT OUTER JOIN Refund AS IR ON A.Account_ID=IR.Buyer_ID;
