@@ -18,8 +18,11 @@ HAVING AVG(amount_paid) > (
 );
 
 -- Provide a list of the IP Item names and associated total copies sold to all buyers, sorted from the IP Item that has sold the most individual copies to the IP Item that has sold the least.
--- Matthew
-
+SELECT I.Item_Name, COUNT(I.Item_ID) AS Copies_Sold
+FROM Orders_Placed AS OP, Shopping_Cart AS SC, Item_Shopping_Cart AS ISC, Item AS I
+WHERE OP.Shopping_Cart_ID = SC.Shopping_Cart_ID AND SC.Shopping_Cart_ID = ISC.Shopping_Cart_ID AND ISC.Item_ID = I.Item_ID
+GROUP BY I.Item_ID
+ORDER BY Copies_Sold DESC;
 
 -- Provide a list of the IP Item names and associated dollar totals for copies sold to all buyers, sorted from the IP Item that has sold the highest dollar amount to the IP Item that has sold the smallest.
 -- Irfan
