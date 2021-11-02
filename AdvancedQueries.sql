@@ -17,17 +17,29 @@ HAVING AVG(amount_paid) > (
         )
 );
 
-
 -- Provide a list of the IP Item names and associated total copies sold to all buyers, sorted from the IP Item that has sold the most individual copies to the IP Item that has sold the least.
+-- Matthew
+
 
 -- Provide a list of the IP Item names and associated dollar totals for copies sold to all buyers, sorted from the IP Item that has sold the highest dollar amount to the IP Item that has sold the smallest.
+-- Irfan
+
 
 -- Find the most popular seller (i.e. the one who has sold the most IP Items)
+-- Irfan
+
 
 -- Find the most profitable seller (i.e. the one who has brought in the most money)
+-- Rachelle
+
 
 -- Provide a list of buyer names for buyers who purchased anything listed by the most profitable seller
+-- Rachelle
+
 
 -- Provide the list of sellers who listed the IP Items purchased by the buyers who have spent more than the average buyer.
+-- Eddie
+
 
 -- Provide sales statistics (number of items sold, highest price, lowest price, and average price) for each type of IP item offered by a particular store.
+-- Eddie
