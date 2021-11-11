@@ -33,10 +33,12 @@ ORDER BY Dollar_Totals DESC;
 
 
 -- Find the most popular seller (i.e. the one who has sold the most IP Items)
-SELECT First_Name, Last_Name
-FROM Account AS A, Item AS I, Virtual_Store AS VS
-WHERE OP.Shopping_Cart_ID = SC.Shopping_Cart_ID AND SC.Shopping_Cart_ID = ISC.Shopping_Cart_ID AND ISC.Item_ID = I.Item_ID
-GROUP BY I.Item_ID HAVING MAX Item_ID
+SELECT First_Name, Last_Name, COUNT(I.Item_ID) AS number_sold
+FROM Item_Shopping_Cart AS ISC, Item AS I, Account AS A
+WHERE ISC.Item_ID=I.item_id AND I.seller_id=A.account_id
+GROUP BY I.Item_ID
+ORDER BY number_sold DESC
+LIMIT 1;
 
 -- Find the most profitable seller (i.e. the one who has brought in the most money)
 SELECT First_Name, Last_Name, SUM(I.Price)
