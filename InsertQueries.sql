@@ -138,55 +138,55 @@ INSERT INTO Virtual_Store
 
 -- (Payment_ID, Payment_Type, Account_ID)
 INSERT INTO Payment 
-	VALUES (1, 1, 1);
+	VALUES (1, 'Credit_Card', 1);
 
 INSERT INTO Payment 
-	VALUES (2, 2, 2);
+	VALUES (2, 'Crypto', 2);
 
 INSERT INTO Payment 
-	VALUES (3, 1, 3);
+	VALUES (3, 'Credit_Card', 3);
 
 INSERT INTO Payment 
-	VALUES (4, 2, 3);
+	VALUES (4, 'Crypto', 3);
 
 INSERT INTO Payment 
-	VALUES (5, 3, 3);
+	VALUES (5, 'Karma', 3);
 
 INSERT INTO Payment 
-	VALUES (6, 4, 3);
+	VALUES (6, 'Bank_Account', 3);
 
 INSERT INTO Payment 
-	VALUES (7, 4, 4);
+	VALUES (7, 'Bank_Account', 4);
 
 INSERT INTO Payment 
-	VALUES (8, 2, 5);
+	VALUES (8, 'Crypto', 5);
 
 INSERT INTO Payment 
-	VALUES (9, 4, 5);
+	VALUES (9, 'Bank_Account', 5);
 
 INSERT INTO Payment 
-	VALUES (10, 3, 6);
+	VALUES (10, 'Karma', 6);
 
 INSERT INTO Payment 
-	VALUES (11, 1, 7);
+	VALUES (11, 'Credit_Card', 7);
 
 INSERT INTO Payment 
-	VALUES (12, 2, 7);
+	VALUES (12, 'Crypto', 7);
 
 INSERT INTO Payment 
-	VALUES (13, 1, 8);
+	VALUES (13, 'Credit_Card', 8);
 
 INSERT INTO Payment 
-	VALUES (14, 2, 8);
+	VALUES (14, 'Crypto', 8);
 
 INSERT INTO Payment 
-	VALUES (15, 4, 9);
+	VALUES (15, 'Bank_Account', 9);
 
 INSERT INTO Payment 
-	VALUES (16, 1, 10);
+	VALUES (16, 'Credit_Card', 10);
 
 INSERT INTO Payment 
-	VALUES (17, 3, 10);
+	VALUES (17, 'Karma', 10);
 
 
 

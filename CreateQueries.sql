@@ -49,18 +49,18 @@ CREATE TABLE Crypto(
 	FOREIGN KEY (Payment_ID) REFERENCES Payment
 );
 
-CREATE TABLE Bank_Account(
-	Payment_ID			INT				NOT NULL,
-	Bank				VARCHAR(20)		NOT NULL,
-	Account_Number		VARCHAR(15)		NOT NULL,
-	PRIMARY KEY (Payment_ID),
-	FOREIGN KEY (Payment_ID) REFERENCES Payment
-);
-
 CREATE TABLE Karma(
 	Payment_ID			INT				NOT NULL,
 	Point_ID			INT				NOT NULL,
 	Point_Amount		INT				NOT NULL,
+	PRIMARY KEY (Payment_ID),
+	FOREIGN KEY (Payment_ID) REFERENCES Payment
+);
+
+CREATE TABLE Bank_Account(
+	Payment_ID			INT				NOT NULL,
+	Bank				VARCHAR(20)		NOT NULL,
+	Account_Number		VARCHAR(15)		NOT NULL,
 	PRIMARY KEY (Payment_ID),
 	FOREIGN KEY (Payment_ID) REFERENCES Payment
 );
