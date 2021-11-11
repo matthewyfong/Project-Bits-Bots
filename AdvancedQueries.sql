@@ -11,10 +11,11 @@ FROM Account JOIN Orders_Placed ON Account.Account_ID = Orders_Placed.Buyer_ID
 GROUP BY Buyer_ID
 HAVING AVG(amount_paid) > (
   SELECT MIN(average)
-  FROM (SELECT AVG(amount_paid) as average
-        FROM Orders_Placed
-        GROUP BY Orders_Placed.Buyer_ID
-        )
+  FROM (
+	SELECT AVG(amount_paid) as average
+	FROM Orders_Placed
+	GROUP BY Orders_Placed.Buyer_ID
+    )
 );
 
 -- Provide a list of the IP Item names and associated total copies sold to all buyers, sorted from the IP Item that has sold the most individual copies to the IP Item that has sold the least.
@@ -49,24 +50,32 @@ WHERE I.Seller_ID = VS.Seller_ID AND I.Seller_ID = A.Account_ID;
 SELECT First_Name, Last_Name
 FROM Account AS A, Item AS I, Virtual_Store AS VS, Orders_Placed AS OP
 WHERE I.Seller_ID = VS.Seller_ID AND I.Seller_ID = A.Account_ID
-GROUP BY First_Name, Last_Name
-HAVING SUM(I.Price)
-	(SELECT First_Name, Last_Name
-	 FROM Account AS A, Orders_Placed AS OP
-	 WHERE OP.Buyer_ID = A.Account_ID);
+GROUP BY A.account_id
+HAVING SUM (I.Price) > (
+	SELECT First_Name, Last_Name
+	FROM Account AS A, Orders_Placed AS OP
+	WHERE OP.Buyer_ID = A.Account_ID
+);
 
 
 -- Provide the list of sellers who listed the IP Items purchased by the buyers who have spent more than the average buyer.
-SELECT   First Name, Last Name
-FROM      Account AS A, Order_placed
-WHERE   A.Account_ID = OP.Buyer_ID AND A.Account_ID = I.Seller_ID AND I.Item_ID = ISC.Item_ID
-GROUP BY Account_ID
-HAVING SUM(Total_price) > (SELECT average) FROM (SELECT AVG(Total_Price) AS average FROM Employee GROUP BY Account_ID));
+SELECT A.First_Name, A.Last_Name
+FROM Account AS A, Orders_Placed AS OP, Item AS I, Item_Shopping_Cart AS ISC
+WHERE A.Account_ID = OP.Buyer_ID AND A.Account_ID = I.Seller_ID AND I.Item_ID = ISC.Item_ID
+GROUP BY A.Account_ID
+HAVING SUM (Total_price) > 
+(
+  SELECT MIN(average)
+  FROM (
+	SELECT AVG(amount_paid) as average
+	FROM Orders_Placed
+	GROUP BY Orders_Placed.Buyer_ID
+    )
+);
 
 
 -- Provide sales statistics (number of items sold, highest price, lowest price, and average price) for each type of IP item offered by a particular store.
-SELECT   Max(Price), Min(Price), avg(Price), Count(Item_ID)
-FROM      Item AS I, Virtual_Store AS VS, Item_Virtual_Store AS IVS, Ordered_Placed AS OP, 
-                 Account_ID)
-WHERE   I.Item_ID = IVS.Item_ID AND IVS.Store_ID = VS.Store_ID AND I.Seller_ID = A.Account_ID AND A.Account_ID = OP.Buyer_ID;
-
+SELECT VS.Name, Max(Price), Min(Price), avg(Price), Count(I.Item_ID) AS number_sold
+FROM Item AS I, Virtual_Store AS VS, Item_VirtualStore AS IVS, Orders_Placed AS OP, Account AS A
+WHERE I.Item_ID = IVS.Item_ID AND IVS.Store_ID = VS.Store_ID AND I.Seller_ID = A.Account_ID AND A.Account_ID = OP.Buyer_ID
+GROUP BY VS.Store_ID;
