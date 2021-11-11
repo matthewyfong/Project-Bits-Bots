@@ -1,4 +1,5 @@
 
+/*
 DROP TABLE Payment;
 DROP TABLE Credit_Card;
 DROP TABLE Crypto;
@@ -21,20 +22,21 @@ DROP TABLE Item_Recommend;
 DROP TABLE Item_Shopping_Cart;
 DROP TABLE Item_Refund;
 DROP TABLE Item_VirtualStore;
+*/
 
 CREATE TABLE Payment(
 	Payment_ID			INT				NOT NULL,
 	Payment_Type		VARCHAR(12)		NOT NULL,
 	Account_ID			INT				NOT NULL,
 	PRIMARY KEY (Payment_ID),
-	FOREIGN KEY (Account_ID) REFERENCES Account_ID
+	FOREIGN KEY (Account_ID) REFERENCES Account
 );
 
 CREATE TABLE Credit_Card(
 	Payment_ID			INT				NOT NULL,
-	CVV					INT				NOT NULL,
+	CVV					INT				UNIQUE,
 	Credit_Card_Number	INT				NOT NULL,
-	Exp_Date			VARCHAR(5)		NOT NULL,
+	Exp_Date			DATE			NOT NULL,
 	PRIMARY KEY (Payment_ID),
 	FOREIGN KEY (Payment_ID) REFERENCES Payment
 );
@@ -42,7 +44,7 @@ CREATE TABLE Credit_Card(
 CREATE TABLE Crypto(
 	Payment_ID			INT				NOT NULL,
 	Crypto_Type			VARCHAR(20)		NOT NULL,
-	Wallet_ID			INT				NOT NULL,
+	Wallet_ID			INT				UNIQUE,
 	PRIMARY KEY (Payment_ID),
 	FOREIGN KEY (Payment_ID) REFERENCES Payment
 );
@@ -50,7 +52,7 @@ CREATE TABLE Crypto(
 CREATE TABLE Bank_Account(
 	Payment_ID			INT				NOT NULL,
 	Bank				VARCHAR(20)		NOT NULL,
-	Account_Number		INT				NOT NULL,
+	Account_Number		VARCHAR(15)		NOT NULL,
 	PRIMARY KEY (Payment_ID),
 	FOREIGN KEY (Payment_ID) REFERENCES Payment
 );
@@ -68,14 +70,14 @@ CREATE TABLE Account(
 	First_Name			VARCHAR(20)		NOT NULL,
 	Last_Name			VARCHAR(20)		NOT NULL,
 	Email				VARCHAR(20)		NOT NULL,
-	Phone_Number		INT,
+	Phone_Number		VARCHAR(15)		UNIQUE,
 	BFlag				BOOLEAN			NOT NULL,
 	Number_of_Purchases	INT,
 	Recommendation_ID	INT,
 	SFlag				BOOLEAN			NOT NULL,
 	Biography			VARCHAR(512),
 	PRIMARY KEY (Account_ID),
-	FOREIGN KEY (Recommendation_ID) REFERENCES Recommenataion_Section
+	FOREIGN KEY (Recommendation_ID) REFERENCES Recommendation_Section
 );
 
 CREATE TABLE Social_Media_Accounts(
@@ -91,7 +93,7 @@ CREATE TABLE Refund(
 	Status				VARCHAR(12)		NOT NULL,
 	Order_ID			INT				NOT NULL,
 	Buyer_ID			INT				NOT NULL,
-	PRIMARY KEY (Refund_ID, Payment_ID),
+	PRIMARY KEY (Refund_ID),
 	FOREIGN KEY (Payment_ID) REFERENCES Payment,
 	FOREIGN KEY (Order_ID) REFERENCES Orders_Placed,
 	FOREIGN KEY (Buyer_ID) REFERENCES Account
