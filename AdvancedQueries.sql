@@ -41,20 +41,27 @@ GROUP BY I.Item_ID
 ORDER BY number_sold DESC
 LIMIT 1;
 
+
 -- Find the most profitable seller (i.e. the one who has brought in the most money)
-SELECT First_Name, Last_Name, SUM(I.Price)
-FROM Account AS A, Item AS I, Virtual_Store AS VS
-WHERE I.Seller_ID = VS.Seller_ID AND I.Seller_ID = A.Account_ID;
+SELECT First_Name, Last_Name, SUM(I.Price) as most_profitable
+FROM Item_Shopping_Cart AS ISC, Item AS I, Account AS A
+WHERE ISC.Item_ID=I.item_id AND I.seller_id=A.account_id
+GROUP BY I.Item_ID
+ORDER BY most_profitable DESC
+LIMIT 1;
+
+
 
 -- Provide a list of buyer names for buyers who purchased anything listed by the most profitable seller
-SELECT First_Name, Last_Name
-FROM Account AS A, Item AS I, Virtual_Store AS VS, Orders_Placed AS OP
-WHERE I.Seller_ID = VS.Seller_ID AND I.Seller_ID = A.Account_ID
-GROUP BY A.account_id
-HAVING SUM (I.Price) > (
-	SELECT First_Name, Last_Name
-	FROM Account AS A, Orders_Placed AS OP
-	WHERE OP.Buyer_ID = A.Account_ID
+SELECT B.First_Name, B.Last_Name, I.Item_Name
+FROM Account AS A, Item AS I, Item_Shopping_Cart AS ISC, Orders_Placed AS OP, Account as B
+WHERE I.Item_ID = ISC.Item_ID AND I.Seller_ID = A.Account_ID AND OP.Buyer_ID = B.account_id AND A.account_id = (
+	SELECT A.Account_ID
+	FROM Item_Shopping_Cart AS ISC, Item AS I, Account AS A
+	WHERE ISC.Item_ID=I.item_id AND I.seller_id=A.account_id
+	GROUP BY I.Item_ID
+	ORDER BY SUM(I.Price) DESC
+	LIMIT 1
 );
 
 

@@ -298,7 +298,7 @@ INSERT INTO Orders_Placed
 	VALUES (8, 'sent', 'email', '2019-12-10', 10, 10, 'yes', 1, 9);
 
 
-
+-- Item_Shopping_Cart (Item_ID, Shopping_Cart_ID)
 INSERT INTO Item_Shopping_Cart
 	VALUES (13, 1);
 
