@@ -17,7 +17,6 @@ DELETE FROM Feedback;
 DELETE FROM Wish_List;
 DELETE FROM Item_WishList;
 
-
 -- (Item_ID, Item_Name, Price, Description, File_Type, Seller_ID)
 INSERT INTO Item
 	VALUES (1, 'Light Blue Color Image', 3, 'Light Blue Image', 'jpeg', 1);
@@ -188,6 +187,15 @@ INSERT INTO Payment
 INSERT INTO Payment 
 	VALUES (17, 'Karma', 10);
 
+INSERT INTO Payment 
+	VALUES (18, 'Credit_Card', 5);
+
+INSERT INTO Payment 
+	VALUES (19, 'Karma', 1);
+
+INSERT INTO Payment 
+	VALUES (20, 'Crypto', 1);
+
 
 
 INSERT INTO Credit_Card
@@ -241,6 +249,15 @@ INSERT INTO Credit_Card
 INSERT INTO Karma
 	VALUES (17, 3, 1000);
 
+INSERT INTO Credit_Card
+	VALUES (18, 7777, 566556657, '2022-02-02');
+
+INSERT INTO Karma
+	VALUES (19, 4, 300);
+
+INSERT INTO Crypto
+	VALUES (20, 'DodgeCoin', 6);
+
 
 
 -- Shopping_Cart (Shopping_Cart_ID, Updated_Date, Buyer_ID)
@@ -271,6 +288,43 @@ INSERT INTO Shopping_Cart
 INSERT INTO Shopping_Cart
 	VALUES (9, '2019–12-10', 1);
 
+INSERT INTO Shopping_Cart
+	VALUES (10, '2019–05-02', 1);
+
+INSERT INTO Shopping_Cart
+	VALUES (11, '2021–11-18', 5);
+
+INSERT INTO Shopping_Cart
+	VALUES (12, '2021–12-03', 1);
+
+INSERT INTO Shopping_Cart
+	VALUES (13, '2021–12-05', 3);
+
+INSERT INTO Shopping_Cart
+	VALUES (14, '2021–12-05', 3);
+
+INSERT INTO Shopping_Cart
+	VALUES (15, '2021–12-05', 9);
+
+INSERT INTO Shopping_Cart
+	VALUES (16, '2021–12-12', 9);
+
+INSERT INTO Shopping_Cart
+	VALUES (17, '2021–12-24', 7);
+
+INSERT INTO Shopping_Cart
+	VALUES (18, '2021–12-25', 7);
+
+INSERT INTO Shopping_Cart
+	VALUES (19, '2021–12-25', 1);
+
+INSERT INTO Shopping_Cart
+	VALUES (20, '2021–12-26', 10);
+
+INSERT INTO Shopping_Cart
+	VALUES (21, '2021–12-27', 10);
+
+
 
 -- (Order_ID, Delivery_Status, Delivery_Method, Date_of_Purchase, Total_Price, Amount_Paid, Completed, Buyer_ID, Shopping_Cart_ID)
 INSERT INTO Orders_Placed
@@ -296,6 +350,40 @@ INSERT INTO Orders_Placed
 
 INSERT INTO Orders_Placed
 	VALUES (8, 'sent', 'email', '2019-12-10', 10, 10, 'yes', 1, 9);
+
+INSERT INTO Orders_Placed
+	VALUES (9, 'sent', 'email', '2019-05-02', 10, 10, 'yes', 1, 10);
+
+INSERT INTO Orders_Placed
+	VALUES (10, 'sent', 'email', '2021-12-03', 5, 5, 'yes', 1, 12);
+
+INSERT INTO Orders_Placed
+	VALUES (11, 'sent', 'email', '2021-12-05', 5, 5, 'yes', 3, 13);
+
+INSERT INTO Orders_Placed
+	VALUES (12, 'sent', 'email', '2021-12-05', 20, 20, 'yes', 3, 14);
+
+INSERT INTO Orders_Placed
+	VALUES (13, 'sent', 'email', '2021-12-05', 3, 3, 'yes', 9, 15);
+
+INSERT INTO Orders_Placed
+	VALUES (14, 'sent', 'email', '2021-12-12', 17, 17, 'yes', 9, 16);
+
+INSERT INTO Orders_Placed
+	VALUES (15, 'sent', 'email', '2021-12-24', 30, 30, 'yes', 7, 17);
+
+INSERT INTO Orders_Placed
+	VALUES (16, 'sent', 'email', '2021-12-25', 7, 7, 'yes', 7, 18);
+
+INSERT INTO Orders_Placed
+	VALUES (17, 'sent', 'email', '2021-12-25', 22, 22, 'yes', 1, 19);
+
+INSERT INTO Orders_Placed
+	VALUES (18, 'sent', 'email', '2021-12-26', 15, 15, 'yes', 10, 20);
+
+INSERT INTO Orders_Placed
+	VALUES (19, 'sent', 'email', '2021-12-27', 4, 4, 'yes', 10, 21);
+
 
 
 -- Item_Shopping_Cart (Item_ID, Shopping_Cart_ID)
@@ -358,9 +446,75 @@ INSERT INTO Item_Shopping_Cart
 
 INSERT INTO Item_Shopping_Cart
 	VALUES (2, 1);
-	
+
 INSERT INTO Item_Shopping_Cart
-	VALUES (3, 10);
+	VALUES (14, 9);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (2, 10);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (11, 10);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (18, 12);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (18, 13);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (9, 14);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (14, 14);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (1, 15);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (19, 16);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (20, 16);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (9, 17);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (11, 17);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (15, 17);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (16, 17);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (11, 18);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (18, 18);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (1, 19);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (2, 19);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (3, 19);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (4, 19);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (8, 20);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (7, 20);
+
+INSERT INTO Item_Shopping_Cart
+	VALUES (10, 21);
 
 
 
@@ -393,7 +547,40 @@ INSERT INTO Payment_Order
 	VALUES (16, 8, 20);
 	
 INSERT INTO Payment_Order
-	VALUES (1, 8, 10);
+	VALUES (20, 9, 10);
+
+INSERT INTO Payment_Order
+	VALUES (1, 10, 5);
+
+INSERT INTO Payment_Order
+	VALUES (3, 11, 5);
+
+INSERT INTO Payment_Order
+	VALUES (6, 12, 20);
+
+INSERT INTO Payment_Order
+	VALUES (15, 13, 3);
+
+INSERT INTO Payment_Order
+	VALUES (15, 14, 17);
+
+INSERT INTO Payment_Order
+	VALUES (11, 15, 15);
+
+INSERT INTO Payment_Order
+	VALUES (12, 15, 15);
+
+INSERT INTO Payment_Order
+	VALUES (11, 16, 7);
+
+INSERT INTO Payment_Order
+	VALUES (1, 17, 22);
+
+INSERT INTO Payment_Order
+	VALUES (17, 18, 15);
+
+INSERT INTO Payment_Order
+	VALUES (16, 19, 4);
 
 
 
@@ -427,6 +614,9 @@ INSERT INTO Item_VirtualStore
 -- (Refund_ID, Payment_ID, Status, Order_ID, Buyer_ID)
 INSERT INTO Refund
 	VALUES (1, 1, 'IN PROGRESS', 1, 1);
+
+INSERT INTO Refund
+    VALUES (2, 12, 'IN PROGRESS', 5, 7);
 
 
 

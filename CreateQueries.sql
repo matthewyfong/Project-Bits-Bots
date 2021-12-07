@@ -34,8 +34,8 @@ CREATE TABLE Payment(
 
 CREATE TABLE Credit_Card(
 	Payment_ID			INT				NOT NULL,
-	CVV					INT				UNIQUE,
-	Credit_Card_Number	INT				NOT NULL,
+	CVV					INT				NOT NULL,
+	Credit_Card_Number	INT				UNIQUE,
 	Exp_Date			DATE			NOT NULL,
 	PRIMARY KEY (Payment_ID),
 	FOREIGN KEY (Payment_ID) REFERENCES Payment
@@ -44,7 +44,7 @@ CREATE TABLE Credit_Card(
 CREATE TABLE Crypto(
 	Payment_ID			INT				NOT NULL,
 	Crypto_Type			VARCHAR(20)		NOT NULL,
-	Wallet_ID			INT				UNIQUE,
+	Wallet_ID			INT				NOT NULL,
 	PRIMARY KEY (Payment_ID),
 	FOREIGN KEY (Payment_ID) REFERENCES Payment
 );
@@ -69,7 +69,7 @@ CREATE TABLE Account(
 	Account_ID			INT				NOT NULL,
 	First_Name			VARCHAR(20)		NOT NULL,
 	Last_Name			VARCHAR(20)		NOT NULL,
-	Email				VARCHAR(20)		NOT NULL,
+	Email				VARCHAR(20)		UNIQUE,
 	Phone_Number		VARCHAR(15)		UNIQUE,
 	BFlag				BOOLEAN			NOT NULL,
 	Number_of_Purchases	INT,

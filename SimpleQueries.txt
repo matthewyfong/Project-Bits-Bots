@@ -30,18 +30,12 @@ GROUP BY IVS.Store_ID
 HAVING COUNT(IVS.Item_ID) <= 5;
 
 -- Find the highest selling item, total number of units of that item sold, total dollar sales for that item, and the store/seller who sells it.
-SELECT I.Item_Name, COUNT(I.Item_ID) AS Total_Units_Sold, SUM(OP.total_price) AS Total_Dollar_Sales, I.Seller_ID
+SELECT I.Item_Name, COUNT(I.Item_ID) AS Total_Units_Sold, SUM(I.Price) AS Total_Dollar_Sales, I.Seller_ID
 FROM Orders_Placed AS OP, Shopping_Cart AS SC, Item_Shopping_Cart AS ISC, Item AS I
 WHERE OP.Shopping_Cart_ID = SC.Shopping_Cart_ID AND SC.Shopping_Cart_ID = ISC.Shopping_Cart_ID AND ISC.Item_ID = I.Item_ID
 GROUP BY I.Item_ID
-HAVING COUNT(*) = (
-	SELECT MAX(Cnt) 
-	FROM(
-		SELECT COUNT(Item_Shopping_Cart.Item_ID) as Cnt
-		FROM Item_Shopping_Cart
-		GROUP BY Item_Shopping_Cart.Item_ID
-	)
-);
+ORDER BY Total_Units_Sold DESC
+LIMIT 1;
 
 -- Create a list of all payment types accepted, number of times each of them was used, and total amount charged to that type of payment
 SELECT Payment_Type, COUNT(Payment_Type), SUM(Amount_Paid)
