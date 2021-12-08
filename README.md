@@ -1,10 +1,10 @@
 # Project-Bits-Bots
 
 ## Table of Contents
-1. [FinalReport.pdf](#Final Report)
-1. [Checkpoints Folder](#Checkpoints Folder)
-1. [Project Requirements Folder](#Project Requirements Folder)
-1. [.sql files](#.sql files)
+1. [FinalReport.pdf](#Final-Report)
+1. [Checkpoints Folder](#Checkpoints-Folder)
+1. [Project Requirements Folder](#Project-Requirements-Folder)
+1. [sql files](#sql-files)
 1. [CreateQueries](#CreateQueries)
 1. [InsertQueries](#InsertQueries)
 1. [InsertDeleteQueries](#InsertDeleteQueries)
@@ -12,16 +12,16 @@
 1. [ExtraQueries](#ExtraQueries)
 1. [AdvancedQueries](#AdvancedQueries)
 
-#### Final Report
+#### Final Report <a name="Final-Report"></a>
 Document addressed to the client.
 
-#### Checkpoints Folder
+#### Checkpoints Folder <a name="Checkpoints-Folder"></a>
 Shows the requirements needed to complete each checkpoint.
 
-#### Project Requirements Folder
+#### Project Requirements Folder <a name="Project-Requirements-Folder"></a>
 All project requirments are found here.
 
-#### .sql files
+#### sql files <a name="sql-files"></a>
 Files that are suitable and can be imported via (https://sqliteonline.com/)
 
 #### CreateQueries
